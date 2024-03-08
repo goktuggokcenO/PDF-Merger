@@ -1,5 +1,6 @@
 # Libraraies.
 import ttkbootstrap as ttk
+from tkinter import filedialog
 
 
 # Create the main window.
@@ -14,15 +15,21 @@ class App(ttk.Window):
 
     # Create the widgets.
     def create_widgets(self):
-        # Create the buttons and the frame that contains them.
+        # Create the buttons frame.
         self.buttons_frame = ttk.Frame(self)
         self.buttons_frame.pack(side="top", fill="x", padx=10, pady=10)
 
+        # Create the add button.
         self.add_button = ttk.Button(
-            self.buttons_frame, text="Add", style="primary", width=15
+            self.buttons_frame,
+            text="Add",
+            style="primary",
+            width=15,
+            command=self.add_file,
         )
         self.add_button.pack(side="left")
 
+        # Create the merge button.
         self.merge_button = ttk.Button(
             self.buttons_frame, text="Merge", style="success", width=15
         )
@@ -30,9 +37,14 @@ class App(ttk.Window):
 
         # Create the file element.
         self.file_element = Files(self, background="secondary")
-        self.file_element.add_file("deneme.txt")
-        self.file_element.add_file("deneme.txt")
-        self.file_element.add_file("deneme.txt")
+
+    # Add a file.
+    def add_file(self):
+        file_path = filedialog.askopenfilename(
+            filetypes=[("PDF Files", "*.pdf")], title="Select a file."
+        )
+        if file_path:
+            self.file_element.add_file(file_path)
 
 
 # Create the file element.
