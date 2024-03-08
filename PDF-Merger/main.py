@@ -29,20 +29,79 @@ class App(ttk.Window):
         self.merge_button.pack(side="right")
 
         # Create the file element.
-        self.file_element = Files(self)
+        self.file_element = Files(self, background="secondary")
+        self.file_element.add_file("deneme.txt")
+        self.file_element.add_file("deneme.txt")
+        self.file_element.add_file("deneme.txt")
 
 
 # Create the file element.
 class Files(ttk.Frame):
     # Constructor.
-    def __init__(self, master):
-        super().__init__(master=master)
-        self.pack(side="top", fill="both", expand=True, padx=10, pady=10)
+    def __init__(self, master, background):
+        super().__init__(master=master, bootstyle=background)
+        self.pack(side="top", fill="both", expand=True)
+        self.selected_files = []
         self.create_widgets()
 
     # Create the widgets.
     def create_widgets(self):
-        self.configure(bootstyle="warning")
+        if len(self.selected_files) == 0:
+            self.label = ttk.Label(
+                self,
+                text="No file selected.",
+                font="helvetica 12",
+                background="#444444",
+                anchor="center",
+            )
+            self.label.pack(side="top", fill="x", padx=5, pady=5)
+
+    # Add a file.
+    def add_file(self, file_path: str):
+        selected_file = Selected_File(self, file_path)
+        self.selected_files.append(selected_file)
+
+        # Destroy the label.
+        if len(self.selected_files) >= 1:
+            self.label.destroy()
+
+
+# Create the selected file.
+class Selected_File(ttk.Frame):
+    # Constructor.
+    def __init__(self, master, file_path: str):
+        super().__init__(master=master)
+        self.pack(side="top", fill="x", padx=5, pady=5)
+        self.file_path = file_path
+        self.create_widgets()
+
+    # Create the widgets.
+    def create_widgets(self):
+        # Create the label.
+        self.label = ttk.Label(self, text=self.file_path)
+        self.label.pack(side="left", fill="x", padx=5, pady=5)
+
+        # Create the remove button.
+        self.remove_button = ttk.Button(
+            self, text="Remove", style="danger", width=8, command=self.remove_file
+        )
+        self.remove_button.pack(side="right", padx=5, pady=5)
+
+    # Remove the file.
+    def remove_file(self):
+        self.destroy()
+        self.master.selected_files.remove(self)
+
+        # Create the label.
+        if len(self.master.selected_files) == 0:
+            self.master.label = ttk.Label(
+                self.master,
+                text="No file selected.",
+                font="helvetica 12",
+                background="#444444",
+                anchor="center",
+            )
+            self.master.label.pack(side="top", fill="x", padx=5, pady=5)
 
 
 # Check the file run directly or as a module.
