@@ -14,9 +14,35 @@ class App(ttk.Window):
 
     # Create the widgets.
     def create_widgets(self):
-        # Create the label.
-        self.label = ttk.Label(self, text="PDF Merger", font=("Helvetica", 24))
-        self.label.pack(pady=10)
+        # Create the buttons and the frame that contains them.
+        self.buttons_frame = ttk.Frame(self)
+        self.buttons_frame.pack(side="top", fill="x", padx=10, pady=10)
+
+        self.add_button = ttk.Button(
+            self.buttons_frame, text="Add", style="primary", width=15
+        )
+        self.add_button.pack(side="left")
+
+        self.merge_button = ttk.Button(
+            self.buttons_frame, text="Merge", style="success", width=15
+        )
+        self.merge_button.pack(side="right")
+
+        # Create the file element.
+        self.file_element = Files(self)
+
+
+# Create the file element.
+class Files(ttk.Frame):
+    # Constructor.
+    def __init__(self, master):
+        super().__init__(master=master)
+        self.pack(side="top", fill="both", expand=True, padx=10, pady=10)
+        self.create_widgets()
+
+    # Create the widgets.
+    def create_widgets(self):
+        self.configure(bootstyle="warning")
 
 
 # Check the file run directly or as a module.
