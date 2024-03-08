@@ -1,6 +1,7 @@
 # Libraraies.
 import ttkbootstrap as ttk
 from tkinter import filedialog
+import PyPDF2
 
 
 # Create the main window.
@@ -31,7 +32,11 @@ class App(ttk.Window):
 
         # Create the merge button.
         self.merge_button = ttk.Button(
-            self.buttons_frame, text="Merge", style="success", width=15
+            self.buttons_frame,
+            text="Merge",
+            style="success",
+            width=15,
+            command=self.merge_files,
         )
         self.merge_button.pack(side="right")
 
@@ -45,6 +50,30 @@ class App(ttk.Window):
         )
         if file_path:
             self.file_element.add_file(file_path)
+
+    # Merge the files.
+    def merge_files(self):
+        # Create a PDF writer object.
+        pdf_writer = PyPDF2.PdfWriter()
+
+        # Iterate over the selected files.
+        for selected_file in self.file_element.selected_files:
+            # Open each file and add its pages to the writer object.
+            with open(selected_file.file_path, "rb") as file:
+                pdf_reader = PyPDF2.PdfReader(file)
+                for page_num in range(len(pdf_reader.pages)):
+                    page = pdf_reader.pages[page_num]
+                    pdf_writer.add_page(page)
+
+        # Save the merged PDF to a file.
+        output_file_path = filedialog.asksaveasfilename(
+            defaultextension=".pdf",
+            filetypes=[("PDF Files", "*.pdf")],
+            title="Save merged PDF",
+        )
+        if output_file_path:
+            with open(output_file_path, "wb") as output_file:
+                pdf_writer.write(output_file)
 
 
 # Create the file element.
