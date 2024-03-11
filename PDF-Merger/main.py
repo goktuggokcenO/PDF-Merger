@@ -1,15 +1,16 @@
 # Libraraies.
-import ttkbootstrap as ttk
+import customtkinter
+import PyPDF2
 from tkinter import filedialog
 from tkinter import messagebox
-import PyPDF2
 
 
 # Create the main window.
-class App(ttk.Window):
+class App(customtkinter.CTk):
     # Constructor.
-    def __init__(self, title: str, geometry: str, themename: str):
-        super().__init__(themename=themename)
+    def __init__(self, title: str, geometry: str):
+        super().__init__()
+        customtkinter.set_appearance_mode("dark")
         self.title(title)
         self.geometry(geometry)
         self.create_widgets()
@@ -18,31 +19,33 @@ class App(ttk.Window):
     # Create the widgets.
     def create_widgets(self):
         # Create the buttons frame.
-        self.buttons_frame = ttk.Frame(self)
+        self.buttons_frame = customtkinter.CTkFrame(self)
         self.buttons_frame.pack(side="top", fill="x", padx=10, pady=10)
 
         # Create the add button.
-        self.add_button = ttk.Button(
-            self.buttons_frame,
+        self.add_button = customtkinter.CTkButton(
+            master=self.buttons_frame,
             text="Add",
-            style="primary",
-            width=15,
+            width=80,
             command=self.add_file,
         )
-        self.add_button.pack(side="left")
+        self.add_button.pack(side="left", padx=5, pady=5)
 
         # Create the merge button.
-        self.merge_button = ttk.Button(
-            self.buttons_frame,
+        self.merge_button = customtkinter.CTkButton(
+            master=self.buttons_frame,
             text="Merge",
-            style="success",
-            width=15,
+            width=80,
             command=self.merge_files,
         )
-        self.merge_button.pack(side="right")
+        self.merge_button.pack(side="right", padx=5, pady=5)
+
+        # Create the title label.
+        self.title_label = customtkinter.CTkLabel(self.buttons_frame, text="PDF Merger")
+        self.title_label.pack(side="top", fill="x", padx=5, pady=5)
 
         # Create the file element.
-        self.file_element = Files(self, background="secondary")
+        self.file_element = Files(self)
 
     # Add a file.
     def add_file(self):
@@ -86,23 +89,21 @@ class App(ttk.Window):
 
 
 # Create the file element.
-class Files(ttk.Frame):
+class Files(customtkinter.CTkFrame):
     # Constructor.
-    def __init__(self, master, background):
-        super().__init__(master=master, bootstyle=background)
-        self.pack(side="top", fill="both", expand=True)
+    def __init__(self, master):
+        super().__init__(master=master)
+        self.pack(side="top", fill="both", expand=True, padx=10, pady=10)
         self.selected_files = []
         self.create_widgets()
 
     # Create the widgets.
     def create_widgets(self):
+        # Create the label.
         if len(self.selected_files) == 0:
-            self.label = ttk.Label(
-                self,
+            self.label = customtkinter.CTkLabel(
+                master=self,
                 text="No file selected.",
-                font="helvetica 12",
-                background="#444444",
-                anchor="center",
             )
             self.label.pack(side="top", fill="x", padx=5, pady=5)
 
@@ -117,7 +118,7 @@ class Files(ttk.Frame):
 
 
 # Create the selected file.
-class Selected_File(ttk.Frame):
+class Selected_File(customtkinter.CTkFrame):
     # Constructor.
     def __init__(self, master, file_path: str):
         super().__init__(master=master)
@@ -127,15 +128,15 @@ class Selected_File(ttk.Frame):
 
     # Create the widgets.
     def create_widgets(self):
-        # Create the label.
-        self.label = ttk.Label(self, text=self.file_path)
-        self.label.pack(side="left", fill="x", padx=5, pady=5)
-
         # Create the remove button.
-        self.remove_button = ttk.Button(
-            self, text="Remove", style="danger", width=8, command=self.remove_file
+        self.remove_button = customtkinter.CTkButton(
+            master=self, text="Remove", width=60, command=self.remove_file
         )
         self.remove_button.pack(side="right", padx=5, pady=5)
+
+        # Create the label.
+        self.label = customtkinter.CTkLabel(master=self, text=self.file_path)
+        self.label.pack(side="left", fill="x", padx=5, pady=5)
 
     # Remove the file.
     def remove_file(self):
@@ -144,12 +145,8 @@ class Selected_File(ttk.Frame):
 
         # Create the label.
         if len(self.master.selected_files) == 0:
-            self.master.label = ttk.Label(
-                self.master,
-                text="No file selected.",
-                font="helvetica 12",
-                background="#444444",
-                anchor="center",
+            self.master.label = customtkinter.CTkLabel(
+                master=self.master, text="No file selected."
             )
             self.master.label.pack(side="top", fill="x", padx=5, pady=5)
 
@@ -157,4 +154,4 @@ class Selected_File(ttk.Frame):
 # Check the file run directly or as a module.
 if __name__ == "__main__":
     # Create the main window.
-    App(title="PDF Merger", geometry="500x500", themename="darkly")
+    App(title="PDF Merger", geometry="500x500")
