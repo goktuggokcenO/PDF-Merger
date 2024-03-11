@@ -130,7 +130,12 @@ class Selected_File(customtkinter.CTkFrame):
     def create_widgets(self):
         # Create the remove button.
         self.remove_button = customtkinter.CTkButton(
-            master=self, text="Remove", width=60, command=self.remove_file
+            master=self,
+            text="Remove",
+            width=60,
+            command=self.remove_file,
+            fg_color="#e74c3c",
+            hover_color="#c0392b",
         )
         self.remove_button.pack(side="right", padx=5, pady=5)
 
