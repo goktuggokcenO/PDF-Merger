@@ -89,7 +89,7 @@ class App(customtkinter.CTk):
 
 
 # Create the file element.
-class Files(customtkinter.CTkFrame):
+class Files(customtkinter.CTkScrollableFrame):
     # Constructor.
     def __init__(self, master):
         super().__init__(master=master)
