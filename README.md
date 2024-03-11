@@ -13,6 +13,7 @@ PDF Merger is a desktop application that allows you to merge multiple PDF files 
 2. Run the .exe file.
 
 ## Usage
+![image](https://github.com/goktuggokcenO/PDF-Merger/assets/102878455/b607ef13-1cbb-4e87-b9e3-881175c1f26b)
 
 1. Launch the PDF Merger application.
 
