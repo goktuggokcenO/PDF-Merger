@@ -12,6 +12,7 @@ class App(customtkinter.CTk):
         super().__init__()
         customtkinter.set_appearance_mode("dark")
         self.title(title)
+        self.minsize(300, 150)
         self.geometry(geometry)
         self.create_widgets()
         self.mainloop()
