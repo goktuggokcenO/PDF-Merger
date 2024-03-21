@@ -1,6 +1,6 @@
 # PDF Merger
 
-PDF Merger is a desktop application that allows you to merge multiple PDF files into a single PDF document.
+PDF Merger is a desktop application that allows user to merge multiple PDF files into a single PDF document.
 
 ## Features
 
