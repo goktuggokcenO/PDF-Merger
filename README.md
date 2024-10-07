@@ -61,6 +61,7 @@ Feel free to contribute to this project by:
 This project is licensed under the MIT License.
 
 ## Screenshots 📸
+![311734087-b607ef13-1cbb-4e87-b9e3-881175c1f26b](https://github.com/user-attachments/assets/6c2ab22c-af3d-426b-a8ca-9d91e0c5c07d)
 
 ## Credits 💖
 
