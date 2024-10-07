@@ -1,30 +1,67 @@
-# PDF Merger
+# PDF Merger 📄✨📁
 
 PDF Merger is a desktop application that allows user to merge multiple PDF files into a single PDF document.
 
-## Features
+## Features ✨
 
 - Merge multiple PDF files into one
 - Select spesific pages from the PDF files for mergeing.
 
-## Installation
+## How It Works 💡
 
-1. Downloand the .exe file.
-2. Run the .exe file.
+The application gets the PDF documents which is uploaded by the user and checks the selected pages then creates a new PDF file in the selected directory.
 
-## Usage
-![image](https://github.com/goktuggokcenO/PDF-Merger/assets/102878455/b607ef13-1cbb-4e87-b9e3-881175c1f26b)
+## Installation ⚙️
+
+To use this PDF merger there is two option: - Option one is directly downloanding .exe file from the latest relase versin then runing it. - Option two is geting the source code and compileing it youself.
+
+To compile the source code yourself:
+
+Clone the repository:
+
+```bash
+git clone https://github.com/goktuggokcenO/PDF-Merger.git
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Change directory:
+
+```bash
+cd PDF-Merger
+```
+
+Run the application:
+
+```bash
+python main.py
+```
+
+## Usage 🖱️
 
 1. Launch the PDF Merger application.
 2. Click on the "Add Files" button to select the PDF files you want to merge.
 3. Select spesific pages if needed.
-5. Click on the "Merge" button to start the merging process.
-6. The merged PDF file will be created in the selected location with written name.
+4. Click on the "Merge" button to start the merging process.
+5. The merged PDF file will be created in the selected location with written name.
 
-## Contributing
+## Contribution 🤝
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+Feel free to contribute to this project by:
 
-## License
+- Submitting issues for any bugs or feature requests.
+- Forking the repository and submitting a pull request.
 
-This project is licensed under the [MIT License](LICENSE).
+## License 📜
+
+This project is licensed under the MIT License.
+
+## Screenshots 📸
+
+## Credits 💖
+
+Developed by Göktuğ Gökcen.
