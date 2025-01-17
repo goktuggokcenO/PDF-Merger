@@ -13,7 +13,9 @@ The application gets the PDF documents which is uploaded by the user and checks 
 
 ## Installation ⚙️
 
-To use this PDF merger there is two option: - Option one is directly downloanding .exe file from the latest relase versin then runing it. - Option two is geting the source code and compileing it youself.
+To use this PDF merger there is two option: 
+- Option one is directly downloanding .exe file from the latest relase versin then runing it.
+- Option two is geting the source code and compileing it youself.
 
 To compile the source code yourself:
 
