@@ -209,9 +209,3 @@ class Selected_File(customtkinter.CTkFrame):
                 self.selected_pages.append(int(checkbox._text.split()[1]) - 1)
                 self.is_page_selected = True
         self.select_page_window.destroy()
-
-
-# Check the file run directly or as a module.
-if __name__ == "__main__":
-    # Create the main window.
-    App(title="PDF Merger", geometry="500x500")
