@@ -1,5 +1,5 @@
 import customtkinter
-from file_selected import Selected_File
+from src.components.file_selected import Selected_File
 
 
 class Files(customtkinter.CTkScrollableFrame):

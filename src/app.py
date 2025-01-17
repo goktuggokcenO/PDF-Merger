@@ -2,7 +2,7 @@ import customtkinter
 import PyPDF2
 from tkinter import filedialog
 from tkinter import messagebox
-from components.file_list import Files
+from src.components.file_list import Files
 
 
 class App(customtkinter.CTk):
