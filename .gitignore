@@ -4,3 +4,8 @@ test_files/pdf2.pdf
 test_files/pdf3.pdf
 .vscode/settings.json
 src/__pycache__/main.cpython-313.pyc
+src/__pycache__/app.cpython-313.pyc
+src/components/__pycache__/file_list.cpython-313.pyc
+src/components/__pycache__/file_selected.cpython-313.pyc
+src/__pycache__/app.cpython-313.pyc
+src/__pycache__/app.cpython-313.pyc
